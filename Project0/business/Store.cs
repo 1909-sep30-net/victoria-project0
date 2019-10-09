@@ -8,8 +8,8 @@ namespace business
     {
         public string name;
         public int storeId;
-        public List<string> Inventory = new List<string>(); 
-        public string location;
+        public Dictionary<Shirt, int> Inventory = new Dictionary<Shirt, int>(); 
+        
 
 
 

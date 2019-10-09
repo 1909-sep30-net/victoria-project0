@@ -6,13 +6,13 @@ namespace business
 {
     public class Order
     {
-        public Store storeLocation;
+        public Store storeId;
 
         public Customer orderedBy;
 
         public DateTime dateOfOrder = new DateTime();
 
-        public List<string> cart = new List<string>();
+        public Dictionary<Shirt, int> cart = new Dictionary<Shirt, int>();
 
 
 
