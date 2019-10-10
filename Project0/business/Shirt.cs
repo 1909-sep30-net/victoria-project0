@@ -7,7 +7,7 @@ namespace business
     public class Shirt
     {
         public string name;
-
+        public int productId;
         public int price;
 
 
