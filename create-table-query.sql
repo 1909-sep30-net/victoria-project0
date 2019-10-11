@@ -1,11 +1,11 @@
 CREATE TABLE [Customers] (
   [CustomerId] int PRIMARY KEY NOT NULL IDENTITY(1, 1),
-  [FirstName] nvarchar NOT NULL,
-  [LastName] nvarchar NOT NULL,
-  [Address] nvarchar NOT NULL,
-  [City] nvarchar NOT NULL,
-  [State] nvarchar NOT NULL,
-  [Country] nvarchar NOT NULL
+  [FirstName] nvarchar(100) NOT NULL,
+  [LastName] nvarchar(100) NOT NULL,
+  [Address] nvarchar(100) NOT NULL,
+  [City] nvarchar(50) NOT NULL,
+  [State] nvarchar(2) NOT NULL,
+  [Country] nvarchar(100) NOT NULL
 )
 GO
 
@@ -27,18 +27,18 @@ CREATE TABLE [OrderDetail] (
 GO
 
 CREATE TABLE [Products] (
-  [Name] nvarchar NOT NULL,
+  [Name] nvarchar(160) NOT NULL,
   [ProductId] int PRIMARY KEY NOT NULL IDENTITY(1000, 1),
   [Price] money NOT NULL
 )
 GO
 
 CREATE TABLE [Stores] (
-  [StoreNum] int PRIMARY KEY NOT NULL IDENTITY(100, 1),
-  [Address] nvarchar NOT NULL,
-  [City] nvarchar NOT NULL,
-  [State] nvarchar NOT NULL,
-  [Country] nvarchar NOT NULL
+  [StoreNum] int PRIMARY KEY NOT NULL IDENTITY(101, 1),
+  [Address] nvarchar(160) NOT NULL,
+  [City] nvarchar(50) NOT NULL,
+  [State] nvarchar(2) NOT NULL,
+  [Country] nvarchar(100) NOT NULL
 )
 GO
 
@@ -67,3 +67,13 @@ GO
 
 ALTER TABLE [Inventory] ADD FOREIGN KEY ([ProductId]) REFERENCES [Products] ([ProductId])
 GO
+
+
+
+
+DROP TABLE Inventory
+DROP TABLE OrderDetail
+DROP TABLE Orders
+DROP TABLE Products
+DROP TABLE Stores
+DROP TABLE Customers
