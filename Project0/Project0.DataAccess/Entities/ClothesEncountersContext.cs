@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using System.Linq;
+using Microsoft.Extensions.Logging;
 
 namespace Project0.DataAccess.Entities
 {
