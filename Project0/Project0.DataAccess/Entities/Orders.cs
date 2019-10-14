@@ -14,10 +14,10 @@ namespace Project0.DataAccess.Entities
         public int OrderId { get; set; }
         public DateTime OrderDate { get; set; }
         public decimal Total { get; set; }
-        public int StoreNum { get; set; }
+        public int StoreId { get; set; }
 
         public virtual Customers Customer { get; set; }
-        public virtual Stores StoreNumNavigation { get; set; }
+        public virtual Stores Store { get; set; }
         public virtual ICollection<OrderDetail> OrderDetail { get; set; }
     }
 }

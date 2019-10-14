@@ -11,7 +11,7 @@ namespace Project0.DataAccess.Entities
             Orders = new HashSet<Orders>();
         }
 
-        public int StoreNum { get; set; }
+        public int StoreId { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
         public string State { get; set; }

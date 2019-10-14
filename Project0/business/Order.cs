@@ -18,3 +18,25 @@ namespace business
 
     }
 }
+
+
+
+
+
+
+//    }
+//    public List<Order> Orders { get; set; } = new List<Order>();
+
+//    public decimal TotalPurchases
+//    {
+//        get
+//        {
+//            if (Orders?.Count > 0)
+//            {
+//                return Orders.Sum(p => p.TotalPrice);
+//            }
+
+//            return 0.00M;
+//        }
+//    }
+//}
