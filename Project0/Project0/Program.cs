@@ -89,9 +89,9 @@ namespace Project0
 
             new Customer
             {
-                FirstName = firstName,
-                LastName = lastName,
-                Address = address
+                firstName = firstName,
+                lastName = lastName,
+                address = address
 
             };
         }

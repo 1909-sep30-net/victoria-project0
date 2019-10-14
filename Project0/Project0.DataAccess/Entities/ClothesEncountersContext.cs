@@ -1,8 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using System.Linq;
-using Microsoft.Extensions.Logging;
 
 namespace Project0.DataAccess.Entities
 {
@@ -30,7 +28,7 @@ namespace Project0.DataAccess.Entities
             modelBuilder.Entity<Customers>(entity =>
             {
                 entity.HasKey(e => e.CustomerId)
-                    .HasName("PK__Customer__A4AE64D8CE322623");
+                    .HasName("PK__Customer__A4AE64D81DD1C5A0");
 
                 entity.Property(e => e.Address)
                     .IsRequired()
@@ -63,13 +61,13 @@ namespace Project0.DataAccess.Entities
                     .WithMany(p => p.Inventory)
                     .HasForeignKey(d => d.ProductId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Inventory__Produ__7A672E12");
+                    .HasConstraintName("FK__Inventory__Produ__1EA48E88");
 
                 entity.HasOne(d => d.StoreNumNavigation)
                     .WithMany(p => p.Inventory)
                     .HasForeignKey(d => d.StoreNum)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Inventory__Store__797309D9");
+                    .HasConstraintName("FK__Inventory__Store__1DB06A4F");
             });
 
             modelBuilder.Entity<OrderDetail>(entity =>
@@ -81,21 +79,21 @@ namespace Project0.DataAccess.Entities
                     .WithMany(p => p.OrderDetail)
                     .HasForeignKey(d => d.OrderId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__OrderDeta__Order__778AC167");
+                    .HasConstraintName("FK__OrderDeta__Order__1BC821DD");
 
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.OrderDetail)
                     .HasForeignKey(d => d.ProductId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__OrderDeta__Produ__787EE5A0");
+                    .HasConstraintName("FK__OrderDeta__Produ__1CBC4616");
             });
 
             modelBuilder.Entity<Orders>(entity =>
             {
                 entity.HasKey(e => e.OrderId)
-                    .HasName("PK__Orders__C3905BCF414E4713");
+                    .HasName("PK__Orders__C3905BCF499FFF55");
 
-                entity.Property(e => e.OrderDate).HasColumnType("datetime");
+                entity.Property(e => e.OrderDate).HasDefaultValueSql("(getdate())");
 
                 entity.Property(e => e.Total).HasColumnType("money");
 
@@ -103,19 +101,19 @@ namespace Project0.DataAccess.Entities
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.CustomerId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Orders__Customer__75A278F5");
+                    .HasConstraintName("FK__Orders__Customer__19DFD96B");
 
                 entity.HasOne(d => d.StoreNumNavigation)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.StoreNum)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Orders__StoreNum__76969D2E");
+                    .HasConstraintName("FK__Orders__StoreNum__1AD3FDA4");
             });
 
             modelBuilder.Entity<Products>(entity =>
             {
                 entity.HasKey(e => e.ProductId)
-                    .HasName("PK__Products__B40CC6CD78C716D2");
+                    .HasName("PK__Products__B40CC6CD0D064469");
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -127,7 +125,7 @@ namespace Project0.DataAccess.Entities
             modelBuilder.Entity<Stores>(entity =>
             {
                 entity.HasKey(e => e.StoreNum)
-                    .HasName("PK__Stores__A8F7D15EB864EECE");
+                    .HasName("PK__Stores__A8F7D15E85621AA8");
 
                 entity.Property(e => e.Address)
                     .IsRequired()

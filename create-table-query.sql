@@ -12,7 +12,7 @@ GO
 CREATE TABLE [Orders] (
   [CustomerId] int NOT NULL,
   [OrderId] int PRIMARY KEY NOT NULL IDENTITY(1, 1),
-  [OrderDate] datetime NOT NULL,
+  [OrderDate] datetime2 NOT NULL DEFAULT (GETDATE()),
   [Total] money NOT NULL,
   [StoreNum] int NOT NULL
 )
