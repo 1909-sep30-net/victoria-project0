@@ -6,53 +6,61 @@ namespace BusinessLogic
 {
     public class Shirt
     {
-        public string name
+        public string Name
         {
-            get => name;
+            get => Name;
             set
             {
                 if (value == string.Empty)
                     throw new ArgumentException("Products must have a name", nameof(value));
 
-                name = value;
+                Name = value;
             }
         }
 
-        public decimal price
+        public double Price
         {
-            get => price;
+            get => Price;
             set
             {
                 if (value <= 0)
                     throw new ArgumentException("Products must have a price", nameof(value));
 
-                price = value;
+                Price = value;
             }
         }
 
-        public int productId
+        public int ProductId
         {
-            get => productId;
+            get => ProductId;
             set
             {
                 if (value <= 0)
                     throw new ArgumentException("Products must have an ID", nameof(value));
 
-                productId = value;
+                ProductId = value;
             }
         }
 
 
-        public int productQuantity
+        public int ProductQuant
         {
-            get => productQuantity;
+            get =>ProductQuant;
             set
             {
                 if (value < 0)
                     throw new ArgumentException("Cannot have negative product quantity", nameof(value));
 
-                productQuantity = value;
+                ProductQuant = value;
             }
+        }
+
+        public Shirt(string name, double price, int productId, int productQuant)
+        {
+            Name = name;
+            Price = price;
+            ProductId = productId;
+            ProductQuant = productQuant;
         }
     }
 

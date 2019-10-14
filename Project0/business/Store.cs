@@ -7,9 +7,18 @@ namespace BusinessLogic
 {
     public class Store
     {
-        public string Name;
+        public string Name = "ClothesEncounters";
 
-        public int StoreId;
+        public int StoreId
+        {
+            get => StoreId;
+            set
+            {
+                if (value <= 0)
+                    throw new ArgumentException("Invalid Store ID", nameof(value));
+                StoreId = value;
+            }
+        }
 
         public Address StoreAddress { get; set; }
 
