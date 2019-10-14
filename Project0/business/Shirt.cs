@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace business
+namespace BusinessLogic
 {
     public class Shirt
     {
-        public string name { 
+        public string name
+        {
             get => name;
             set
             {
@@ -17,7 +18,8 @@ namespace business
             }
         }
 
-        public decimal price {
+        public decimal price
+        {
             get => price;
             set
             {
@@ -28,34 +30,34 @@ namespace business
             }
         }
 
-        public int productId {
+        public int productId
+        {
             get => productId;
             set
             {
                 if (value <= 0)
                     throw new ArgumentException("Products must have an ID", nameof(value));
 
-                productId= value;
+                productId = value;
             }
         }
-    
 
-        public int productQuantity {
-        get => productQuantity;
-        set
+
+        public int productQuantity
         {
-            if (value < 0)
-                throw new ArgumentException("Cannot have negative product quantity", nameof(value));
+            get => productQuantity;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentException("Cannot have negative product quantity", nameof(value));
 
-            productQuantity = value;
+                productQuantity = value;
+            }
         }
     }
-}
-        
 
-
-    }
 }
+
 
 
 

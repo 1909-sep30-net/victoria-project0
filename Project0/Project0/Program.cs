@@ -1,6 +1,6 @@
-﻿using business;
-using System;
+﻿using System;
 using Project0.DataAccess;
+using BusinessLogic;
 
 namespace Project0
 {
@@ -16,8 +16,17 @@ namespace Project0
             Console.WriteLine("What is your last name?");
             string lastName = Console.ReadLine();
 
-            Console.WriteLine("What is your address?");
-            string address = Console.ReadLine();
+            Console.WriteLine("What is your street address?");
+            string street = Console.ReadLine();
+            
+            Console.WriteLine("What is your city?");
+            string city = Console.ReadLine();
+
+            Console.WriteLine("What is your state?");
+            string state = Console.ReadLine();
+
+            Console.WriteLine("What is your zipcode?");
+            string zip = Console.ReadLine();
 
             string userSelection1;
 
@@ -87,13 +96,9 @@ namespace Project0
 
             } while (userSelection1 == "3"); //exit the program
 
-            new Customer
-            {
-                firstName = firstName,
-                lastName = lastName,
-                address = address
-
-            };
+            Address address = new Address(street, city, state, zip);
+            Customer newCustomer = new Customer(firstName, lastName, address);
+            
         }
 
         public static void StoreSelectionMenu()

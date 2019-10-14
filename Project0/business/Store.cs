@@ -2,13 +2,20 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace business
+
+namespace BusinessLogic
 {
     public class Store
     {
-        public string name;
-        public int storeId;
-        public Dictionary<Shirt, int> Inventory = new Dictionary<Shirt, int>(); 
+        public string Name;
+
+        public int StoreId;
+
+        public Address StoreAddress { get; set; }
+
+
+        public Dictionary<Shirt, int> Inventory = new Dictionary<Shirt, int>();
+        
         
 
 

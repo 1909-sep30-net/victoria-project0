@@ -1,61 +1,60 @@
-﻿using System;
+﻿using BusinessLogic;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace business
+namespace BusinessLogic
 {
     public class Customer
     {
-        public string firstName
+        Address _address = null;
+        public string FirstName
         {
-            get => firstName;
+            get => FirstName;
             set
             {
                 if (value == string.Empty)
                     throw new ArgumentException("Must have a first name", nameof(value));
 
-                firstName = value;
+                FirstName = value;
             }
         }
-        public string lastName
+        public string LastName
         {
-            get => lastName;
+            get => LastName;
             set
             {
                 if (value == string.Empty)
                     throw new ArgumentException("Must have a last name", nameof(value));
 
-                lastName = value;
+                LastName = value;
             }
 
         }
 
-        public string address
+        public Address CustomerAddress { get; set; }
+
+
+        public int Id
         {
-            get => address;
-            set
-            {
-                if (value == string.Empty)
-                    throw new ArgumentException("Must have an address", nameof(value));
-
-                address = value;
-            }
-
-        }
-
-
-
-
-        public int id
-        {
-            get => id;
+            get => Id;
             set
             {
                 if (value <= 0)
                     throw new ArgumentException("Invalid Customer ID", nameof(value));
-                id = value;
+                Id = value;
             }
         }
+
+
+        public Customer(string firstName, string lastName, Address address, int id)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            CustomerAddress = address;
+            Id = id;
+        }
+
     }
 }
 
