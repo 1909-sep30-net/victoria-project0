@@ -33,7 +33,7 @@ namespace BusinessLogic
                 if (value < 0)
                     throw new ArgumentException("Order total cannot be negative", nameof(value));
 
-                OrderTotal = value;
+                OrderTotal = value; 
             }
         }
 

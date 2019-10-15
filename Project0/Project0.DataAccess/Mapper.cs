@@ -30,6 +30,11 @@ namespace Project0.DataAccess
 
         }
 
+        internal static Store MapStore(object p)
+        {
+            throw new NotImplementedException();
+        }
+
         public static BusinessLogic.Shirt MapShirt(Entities.Products products)
         {
             return new BusinessLogic.Shirt
@@ -46,10 +51,10 @@ namespace Project0.DataAccess
             };
         }
 
-        public static Dictionary<Shirt, int> MapInventory(Entities.Stores store)
-        {
+        //public static Dictionary<Shirt, int> MapInventory(Entities.Stores store)
+        //{
 
-        }
+        //}
 
         public static void MapInventory(ref Entities.Stores store, Dictionary<Shirt, int> inventory)
         {

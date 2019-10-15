@@ -96,8 +96,8 @@ namespace Project0
 
             } while (userSelection1 == "3"); //exit the program
 
-            Address address = new Address(street, city, state, zip);
-            Customer newCustomer = new Customer(firstName, lastName, address);
+            //Address address = new Address(street, city, state, zip);
+            //Customer newCustomer = new Customer(firstName, lastName, address);
             
         }
 

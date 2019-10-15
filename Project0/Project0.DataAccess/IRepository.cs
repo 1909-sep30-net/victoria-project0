@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Project0.DataAccess
 {
-    interface IRepository
+    public interface IRepository
     {
     }
 }
