@@ -12,6 +12,6 @@ namespace Project0.DataAccess
         /// </summary>
         /// <returns>The restaurant</returns>
         public Library.Models.Store GetStoreById(int id) =>
-            Mapper.MapRestaurantWithReviews(ClothesEncountersContext.Stores.Find(id));
+            Mapper.MapStore(ClothesEncountersContext.Stores.Find(id));
     }
 }

@@ -4,26 +4,97 @@ using System.Text;
 using System.Linq;
 using BusinessLogic;
 
-namespace Project0.DataAccess 
+namespace Project0.DataAccess
 {
     public static class Mapper
     {
-        public static BusinessLogic.Models.Stores MapRestaurantWithReviews(Entities.Stores stores)
+        public static BusinessLogic.Store MapStore(Entities.Stores stores)
 
         {
 
-            return new BusinessLogic.Models.Restaurant
+            return new BusinessLogic.Store
 
             {
 
-                Id = stores.Id,
+                StoreId = stores.StoreId,
 
-                Name = stores.Name,
+                Street = stores.Address,
 
-                Reviews = restaurant.Review.Select(Map).ToList()
+                City = stores.City,
+
+                State = stores.State,
+
+                Zip = stores.Zipcode
 
             };
 
         }
-    }
+
+        public static BusinessLogic.Shirt MapShirt(Entities.Products products)
+        {
+            return new BusinessLogic.Shirt
+
+            {
+
+                Name = products.Name,
+
+                Price = products.Price,
+
+                ProductId = products.ProductId
+
+
+            };
+        }
+
+        public static Dictionary<Shirt, int> MapInventory(Entities.Stores store)
+        {
+
+        }
+
+        public static void MapInventory(ref Entities.Stores store, Dictionary<Shirt, int> inventory)
+        {
+
+        }
+        public static BusinessLogic.Customer MapCustomer(Entities.Customers customers)
+        {
+            return new BusinessLogic.Customer
+
+            {
+
+                FirstName = customers.FirstName,
+
+                LastName = customers.LastName,
+
+                Street = customers.Address,
+
+                City = customers.City,
+
+                State = customers.State,
+
+                Zip = customers.Zipcode,
+
+                Id = customers.CustomerId
+
+
+            };
+        }
+
+         public static BusinessLogic.Order MapOrder(Entities.Orders orders)
+        {
+             return new BusinessLogic.Order
+
+                {
+
+                  OrderId = orders.OrderId,
+
+                  DateOfOrder = orders.OrderDate,
+
+                  OrderTotal = orders.Total
+
+
+                };
+
+
+            }
+        }
 }

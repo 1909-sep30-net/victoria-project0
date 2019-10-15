@@ -18,7 +18,7 @@ namespace BusinessLogic
             }
         }
 
-        public double Price
+        public decimal Price
         {
             get => Price;
             set
@@ -43,25 +43,15 @@ namespace BusinessLogic
         }
 
 
-        public int ProductQuant
-        {
-            get =>ProductQuant;
-            set
-            {
-                if (value < 0)
-                    throw new ArgumentException("Cannot have negative product quantity", nameof(value));
+       
 
-                ProductQuant = value;
-            }
-        }
-
-        public Shirt(string name, double price, int productId, int productQuant)
+        /* public Shirt(string name, decimal price, int productId)
         {
             Name = name;
             Price = price;
             ProductId = productId;
-            ProductQuant = productQuant;
-        }
+           
+        } */
     }
 
 }

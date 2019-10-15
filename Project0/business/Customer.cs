@@ -7,7 +7,7 @@ namespace BusinessLogic
 {
     public class Customer
     {
-        Address _address = null;
+        
         public string FirstName
         {
             get => FirstName;
@@ -32,7 +32,58 @@ namespace BusinessLogic
 
         }
 
-        public Address CustomerAddress { get; set; }
+        public string Street
+        {
+            get => Street;
+            set
+            {
+                if (value == string.Empty)
+                    throw new ArgumentException("Must have an address", nameof(value));
+
+                Street = value;
+            }
+
+        }
+        public string City
+        {
+            get => City;
+            set
+            {
+                if (value == string.Empty)
+                    throw new ArgumentException("Must have a city", nameof(value));
+
+                City = value;
+            }
+
+        }
+
+        public string State
+        {
+            get => State;
+            set
+            {
+                if (value == string.Empty)
+                    throw new ArgumentException("Must have an state", nameof(value));
+
+                State = value;
+            }
+
+        }
+
+
+
+        public string Zip
+        {
+            get => Zip;
+            set
+            {
+                if (value.Length != 5)
+                    throw new ArgumentException("Must have a zipcode", nameof(value));
+
+                Zip = value;
+            }
+
+        }
 
 
         public int Id
@@ -47,12 +98,12 @@ namespace BusinessLogic
         }
 
 
-        public Customer(string firstName, string lastName, Address address)
-        {
-            FirstName = firstName;
-            LastName = lastName;
-            CustomerAddress = address;
-        }
+        //public Customer(string firstName, string lastName, Address address)
+        //{
+        //    FirstName = firstName;
+        //    LastName = lastName;
+        //    CustomerAddress = address;
+        //}
 
     }
 }
