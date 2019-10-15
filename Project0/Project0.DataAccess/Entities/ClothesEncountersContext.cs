@@ -22,14 +22,14 @@ namespace Project0.DataAccess.Entities
         public virtual DbSet<Products> Products { get; set; }
         public virtual DbSet<Stores> Stores { get; set; }
 
-       
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Customers>(entity =>
             {
                 entity.HasKey(e => e.CustomerId)
-                    .HasName("PK__Customer__A4AE64D88CEAD59D");
+                    .HasName("PK__Customer__A4AE64D85A576252");
 
                 entity.Property(e => e.Address)
                     .IsRequired()
@@ -38,10 +38,6 @@ namespace Project0.DataAccess.Entities
                 entity.Property(e => e.City)
                     .IsRequired()
                     .HasMaxLength(50);
-
-                entity.Property(e => e.Country)
-                    .IsRequired()
-                    .HasMaxLength(100);
 
                 entity.Property(e => e.FirstName)
                     .IsRequired()
@@ -54,6 +50,10 @@ namespace Project0.DataAccess.Entities
                 entity.Property(e => e.State)
                     .IsRequired()
                     .HasMaxLength(2);
+
+                entity.Property(e => e.Zipcode)
+                    .IsRequired()
+                    .HasMaxLength(5);
             });
 
             modelBuilder.Entity<Inventory>(entity =>
@@ -64,13 +64,13 @@ namespace Project0.DataAccess.Entities
                     .WithMany(p => p.Inventory)
                     .HasForeignKey(d => d.ProductId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Inventory__Produ__31B762FC");
+                    .HasConstraintName("FK__Inventory__Produ__42E1EEFE");
 
                 entity.HasOne(d => d.Store)
                     .WithMany(p => p.Inventory)
                     .HasForeignKey(d => d.StoreId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Inventory__Store__30C33EC3");
+                    .HasConstraintName("FK__Inventory__Store__41EDCAC5");
             });
 
             modelBuilder.Entity<OrderDetail>(entity =>
@@ -82,19 +82,19 @@ namespace Project0.DataAccess.Entities
                     .WithMany(p => p.OrderDetail)
                     .HasForeignKey(d => d.OrderId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__OrderDeta__Order__2EDAF651");
+                    .HasConstraintName("FK__OrderDeta__Order__40058253");
 
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.OrderDetail)
                     .HasForeignKey(d => d.ProductId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__OrderDeta__Produ__2FCF1A8A");
+                    .HasConstraintName("FK__OrderDeta__Produ__40F9A68C");
             });
 
             modelBuilder.Entity<Orders>(entity =>
             {
                 entity.HasKey(e => e.OrderId)
-                    .HasName("PK__Orders__C3905BCFDDFEE301");
+                    .HasName("PK__Orders__C3905BCFE3DDB6CF");
 
                 entity.Property(e => e.OrderDate).HasDefaultValueSql("(getdate())");
 
@@ -104,19 +104,19 @@ namespace Project0.DataAccess.Entities
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.CustomerId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Orders__Customer__2CF2ADDF");
+                    .HasConstraintName("FK__Orders__Customer__3E1D39E1");
 
                 entity.HasOne(d => d.Store)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.StoreId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Orders__StoreId__2DE6D218");
+                    .HasConstraintName("FK__Orders__StoreId__3F115E1A");
             });
 
             modelBuilder.Entity<Products>(entity =>
             {
                 entity.HasKey(e => e.ProductId)
-                    .HasName("PK__Products__B40CC6CD146A1E45");
+                    .HasName("PK__Products__B40CC6CDAADF0D8A");
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -128,7 +128,7 @@ namespace Project0.DataAccess.Entities
             modelBuilder.Entity<Stores>(entity =>
             {
                 entity.HasKey(e => e.StoreId)
-                    .HasName("PK__Stores__3B82F1012E66D62F");
+                    .HasName("PK__Stores__3B82F10199613BB7");
 
                 entity.Property(e => e.Address)
                     .IsRequired()
@@ -138,13 +138,13 @@ namespace Project0.DataAccess.Entities
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(e => e.Country)
-                    .IsRequired()
-                    .HasMaxLength(100);
-
                 entity.Property(e => e.State)
                     .IsRequired()
                     .HasMaxLength(2);
+
+                entity.Property(e => e.Zipcode)
+                    .IsRequired()
+                    .HasMaxLength(5);
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -6,7 +6,18 @@ namespace BusinessLogic
 {
     public class Order
     {
-        public Store storeId;
+        public int StoreId
+        {
+            get => StoreId;
+            set
+            {
+                if (value <= 0)
+                    throw new ArgumentException("All stores have an ID", nameof(value));
+
+                StoreId = value;
+            }
+        }
+
 
         public Customer orderedBy;
 
@@ -23,20 +34,3 @@ namespace BusinessLogic
 
 
 
-
-//    }
-//    public List<Order> Orders { get; set; } = new List<Order>();
-
-//    public decimal TotalPurchases
-//    {
-//        get
-//        {
-//            if (Orders?.Count > 0)
-//            {
-//                return Orders.Sum(p => p.TotalPrice);
-//            }
-
-//            return 0.00M;
-//        }
-//    }
-//}

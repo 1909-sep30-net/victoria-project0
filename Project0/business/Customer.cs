@@ -47,12 +47,11 @@ namespace BusinessLogic
         }
 
 
-        public Customer(string firstName, string lastName, Address address, int id)
+        public Customer(string firstName, string lastName, Address address)
         {
             FirstName = firstName;
             LastName = lastName;
             CustomerAddress = address;
-            Id = id;
         }
 
     }
