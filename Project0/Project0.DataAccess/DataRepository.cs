@@ -13,6 +13,7 @@ namespace Project0.DataAccess
         public DataRepository(object context)
         {
             context = new ClothesEncountersContext();
+            
         }
 
         public BusinessLogic.Store GetStoreById(int id) => Mapper.MapStore(context.Stores.Find(id));
@@ -38,11 +39,18 @@ namespace Project0.DataAccess
 
             }
 
-
-
            
         }
 
-    
+    //public GetStoreByIdWithInventory(int StoreId)
+    //{ return Inventory
+    //        {
+    //            var Stores = context.Stores.Include(s => s.Inventory).ThenInclude(i => i.Product).FirstOrDefault(s => s.Id == id)
+    //        };
+    //}
+
+
+
+
 }
 

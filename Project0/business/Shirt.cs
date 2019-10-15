@@ -43,15 +43,15 @@ namespace BusinessLogic
         }
 
 
-       
 
-        /* public Shirt(string name, decimal price, int productId)
+
+        public Shirt(string name, decimal price, int productId)
         {
             Name = name;
             Price = price;
             ProductId = productId;
-           
-        } */
+
+        }
     }
 
 }
