@@ -56,22 +56,23 @@ namespace Project0.DataAccess.Entities
                     .HasMaxLength(5);
             });
 
-            modelBuilder.Entity<Inventory>(entity =>
-            {
-                entity.HasNoKey();
+            modelBuilder.Entity<Inventory>().HasKey(i => new { i.ProductId, i.StoreId });
+            //{
+               
+                //entity.HasNoKey();
 
-                entity.HasOne(d => d.Product)
-                    .WithMany(p => p.Inventory)
-                    .HasForeignKey(d => d.ProductId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Inventory__Produ__42E1EEFE");
+                //entity.HasOne(d => d.Product)
+                //    .WithMany(p => p.Inventory)
+                //    .HasForeignKey(d => d.ProductId)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("FK__Inventory__Produ__42E1EEFE");
 
-                entity.HasOne(d => d.Store)
-                    .WithMany(p => p.Inventory)
-                    .HasForeignKey(d => d.StoreId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Inventory__Store__41EDCAC5");
-            });
+                //entity.HasOne(d => d.Store)
+                //    .WithMany(p => p.Inventory)
+                //    .HasForeignKey(d => d.StoreId)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("FK__Inventory__Store__41EDCAC5");
+            //});
 
             modelBuilder.Entity<OrderDetail>(entity =>
             {

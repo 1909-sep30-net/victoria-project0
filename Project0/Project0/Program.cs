@@ -1,6 +1,8 @@
 ﻿using System;
 using Project0.DataAccess;
 using BusinessLogic;
+using Microsoft.EntityFrameworkCore;
+using Project0.DataAccess.Entities;
 
 namespace Project0
 {
@@ -8,25 +10,77 @@ namespace Project0
     {
         static void Main(string[] args)
         {
+            string connectionString = SecretConfiguration.ConnectionString;
+
+            DbContextOptions<ClothesEncountersContext> options = new DbContextOptionsBuilder<ClothesEncountersContext>()
+                .UseSqlServer(connectionString)
+                .Options;
+
+            using var context = new ClothesEncountersContext(options);
+
+            DataRepository dbrepo = new DataRepository(context);
+
+            //dbrepo.viewallcustomers return list
+
             Console.WriteLine("Welcome to ClothesEncounters!");
 
-            Console.WriteLine("What is your first name?");
-            string firstName = Console.ReadLine();
+            Console.WriteLine("Are you a new customer?");
+            Console.WriteLine("1 - Yes");
+            Console.WriteLine("2 - No");
+            Console.WriteLine("Type your selection");
+            string q1 = Console.ReadLine();
 
-            Console.WriteLine("What is your last name?");
-            string lastName = Console.ReadLine();
+            switch (q1)
+            {
+                case "1":
+                        Console.WriteLine("Awesome! What is your first name?");
+                        string firstName = Console.ReadLine();
 
-            Console.WriteLine("What is your street address?");
-            string street = Console.ReadLine();
-            
-            Console.WriteLine("What is your city?");
-            string city = Console.ReadLine();
+                        Console.WriteLine("What is your last name?");
+                        string lastName = Console.ReadLine();
 
-            Console.WriteLine("What is your state?");
-            string state = Console.ReadLine();
+                        Console.WriteLine("What is your street address?");
+                        string street = Console.ReadLine();
 
-            Console.WriteLine("What is your zipcode?");
-            string zip = Console.ReadLine();
+                        Console.WriteLine("What is your city?");
+                        string city = Console.ReadLine();
+
+                        Console.WriteLine("What is your state?");
+                        string state = Console.ReadLine();
+
+                        Console.WriteLine("What is your zipcode?");
+                        string zip = Console.ReadLine();
+
+                        Customer customer = new Customer(firstName, lastName, street, city, state, zip);
+                        dbrepo.AddNewCustomer(customer);
+
+
+                    break;
+
+                case "2":
+                    Console.WriteLine("Here are a list of our existing customers. /n" + 
+                        "Tell us who you are by typing your full name");
+                    var customers = dbrepo.GetAllCustomers();
+                    int a = 0;
+                    foreach (Customer c in customers)
+                    {
+                        Console.WriteLine($"{a} {c.FirstName} {c.LastName} ");
+                        a++;
+                    }
+                    string firstname = Console.ReadLine();
+                    dbrepo.GetCustomerByFirstName(firstname);
+
+                    
+                    break;
+
+
+
+            }
+
+
+
+
+
 
             string userSelection1;
 
@@ -49,6 +103,8 @@ namespace Project0
                             {
                                 case 1:
                                     //set to store #101, display inventory
+
+
                                     break;
                                 case 2:
 
@@ -90,15 +146,15 @@ namespace Project0
                         //display inventory from default store
 
                         break;
-                    //case "3":
-                    //    break;
+                        //case "3":
+                        //    break;
                 }
 
             } while (userSelection1 == "3"); //exit the program
 
             //Address address = new Address(street, city, state, zip);
-            //Customer newCustomer = new Customer(firstName, lastName, address);
-            
+            //Customer newCustomer = new Customer(FirstName, LastName, street,  );
+
         }
 
         public static void StoreSelectionMenu()

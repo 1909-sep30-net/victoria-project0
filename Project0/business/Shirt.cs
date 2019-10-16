@@ -44,7 +44,8 @@ namespace BusinessLogic
 
 
 
-
+        public Shirt()
+            {}
         public Shirt(string name, decimal price, int productId)
         {
             Name = name;

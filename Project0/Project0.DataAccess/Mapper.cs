@@ -11,7 +11,7 @@ namespace Project0.DataAccess
     public class Mapper
     {
 
-        //convert BL Store to DB Stores
+        //convert DB Stores to BL Store 
         public BusinessLogic.Store MapStore(Entities.Stores stores)
 
         {
@@ -34,7 +34,7 @@ namespace Project0.DataAccess
 
         }
 
-        //Convert DB Stores into BL Store
+        //Convert BL Store into DB Stores
         public Project0.DataAccess.Entities.Stores MapDbStores(Store store)
 
         {
@@ -61,7 +61,7 @@ namespace Project0.DataAccess
             throw new NotImplementedException();
         }
 
-        //converts BL Shirt to DB Product
+        //converts DB Products to  BL Shirt 
         public static BusinessLogic.Shirt MapShirt(Entities.Products products)
         {
             return new BusinessLogic.Shirt(products.Name, products.Price, products.ProductId);
@@ -78,8 +78,8 @@ namespace Project0.DataAccess
             };*/
         }
 
-        //converting DB Products to BL Shirt
-        public Project0.DataAccess.Entities.Products MapDbProduct(Shirt shirt)
+        //converting BL Shirt to DB Products  
+        public static Project0.DataAccess.Entities.Products MapDbProduct(Shirt shirt)
         {
 
             return new Project0.DataAccess.Entities.Products
@@ -97,19 +97,11 @@ namespace Project0.DataAccess
 
         }
 
-        //public static Dictionary<Shirt, int> MapInventory(Entities.Stores store)
-        //{
-
-        //}
-
-        //public void MapInventory(ref Entities.Stores store, Dictionary<Shirt, int> inventory)
-        //{
-
-        //}
 
 
-        // converts BL customer to DB customers
-        public BusinessLogic.Customer MapCustomer(Entities.Customers customers)
+
+        // converts  DB customers to BL customer 
+        public static BusinessLogic.Customer MapCustomer(Entities.Customers customers)
         {
             return new BusinessLogic.Customer
 
@@ -133,8 +125,8 @@ namespace Project0.DataAccess
             };
         }
 
-        //converts DB customers into BL customer
-        public Project0.DataAccess.Entities.Customers MapDbCustomer(Customer customer)
+        //converts BL customer into DB customers
+        public static Project0.DataAccess.Entities.Customers MapDbCustomer(Customer customer)
         {
             return new Project0.DataAccess.Entities.Customers
             {
@@ -154,7 +146,7 @@ namespace Project0.DataAccess
             };
         }
 
-        //Convert BL Order to DB Orders
+        //Convert DB Orders to BL Order  
         public BusinessLogic.Order MapOrder(Entities.Orders orders)
         {
             return new BusinessLogic.Order
@@ -173,7 +165,7 @@ namespace Project0.DataAccess
 
         }
 
-        //Convert DB Orders to BL Order
+        //Convert BL Order to DB Orders 
         public Project0.DataAccess.Entities.Orders MapDbOrders(Order order)
         {
             return new Project0.DataAccess.Entities.Orders
@@ -193,7 +185,7 @@ namespace Project0.DataAccess
         }
 
 
-        //
+        //Connecting Inventory Dictionary to DB inventory
         public BusinessLogic.Store MapInventory(Stores stores)
         {
             return new BusinessLogic.Store
@@ -207,17 +199,15 @@ namespace Project0.DataAccess
                     return new Shirt(i.Product.Name, i.Product.Price, i.Product.ProductId);
                     
                 },
-                i => i.Quantity?? throw new ArgumentException ("Quantity can't be null.") )
+                i => i.Quantity ?? throw new ArgumentException ("Quantity can't be null.") )
             };
         }
 
 
-            }
-            //var list = new List<int> { 3, 6, 2, 9 };
-            //var squares = list.Select(n => n * n).ToList(); // { 9, 36, 4, 81 }
+    }
+           
 
-
-        }
+ }
 
 
     
