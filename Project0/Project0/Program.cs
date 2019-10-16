@@ -177,14 +177,15 @@ namespace Project0
             {
                 foreach (var item in invent101)
                 {
-                    Console.WriteLine($" Product: {item.Key.Name} Stock: {item.Value}");
+                    Console.WriteLine($" Product: {item.Key.Name} Stock: {item.Value} Price: ${item.Key.Price}");
+                    Console.WriteLine("Okay! Now that you know our inventory, let's shop!");
                 }
             }
 
-            static void PlaceOrder();
-            {
+            //static void PlaceOrder();
+            //{
 
-            }
+            //}
 
 
         

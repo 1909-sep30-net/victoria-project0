@@ -13,7 +13,7 @@ namespace BusinessLogic
             set
             {
                 if (value <= 0)
-                    throw new ArgumentException("All stores have an ID", nameof(value));
+                    throw new ArgumentException("All orders must have an ID", nameof(value));
 
                 orderId = value;
             }
