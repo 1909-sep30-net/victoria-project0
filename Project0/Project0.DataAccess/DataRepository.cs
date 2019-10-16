@@ -38,9 +38,45 @@ namespace Project0.DataAccess
 
         }
 
+        public List<BusinessLogic.Store> GetAllStores()
+        {
+            IQueryable<Project0.DataAccess.Entities.Stores> stores = context.Stores
+                .AsNoTracking();
+
+            return stores.Select(Mapper.MapStore).ToList();
+
+
+        }
+
         public Customer GetCustomerByFirstName(string firstName)
 
             => context.Customers.Select(Mapper.MapCustomer).Where(c => c.FirstName == firstName).FirstOrDefault();
+
+
+        public Dictionary<Shirt,int> GetInventoryByStoreId(int storeId)
+        {
+            using var context = GetContext();
+            List<Inventory> getInvent = context.Inventory.Where(i => i.StoreId == storeId).ToList();
+            Dictionary<Shirt, int> burrito = new Dictionary<Shirt, int>();
+            foreach (Inventory  item in getInvent)
+            {
+                burrito.Add(new Shirt() { Name = context.Products.Single(p => p.ProductId == item.ProductId).Name, Price = context.Products.Single(p => p.ProductId == item.ProductId).Price, ProductId = item.ProductId}, (int) item.Quantity);
+            }
+            return burrito;
+
+        }
+
+        public static ClothesEncountersContext GetContext()
+        {
+            string connectionString = SecretConfiguration.ConnectionString;
+
+            DbContextOptions<ClothesEncountersContext> options = new DbContextOptionsBuilder<ClothesEncountersContext>()
+                .UseSqlServer(connectionString)
+                .Options;
+
+            return new ClothesEncountersContext(options);
+        }
+
 
 
         public static class Dependencies

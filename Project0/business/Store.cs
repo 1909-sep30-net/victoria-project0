@@ -9,66 +9,70 @@ namespace BusinessLogic
     {
         public string Name = "ClothesEncounters";
 
+        private int storeId;
         public int StoreId
         {
-            get => StoreId;
+            get => storeId;
             set
             {
                 if (value <= 0)
                     throw new ArgumentException("Invalid Store ID", nameof(value));
-                StoreId = value;
+                storeId = value;
             }
         }
 
+        private string street;
         public string Street
         {
-            get => Street;
+            get => street;
             set
             {
                 if (value == string.Empty)
                     throw new ArgumentException("Must have an address", nameof(value));
 
-                Street = value;
+                street = value;
             }
 
         }
+        private string city;
         public string City
         {
-            get => City;
+            get => city;
             set
             {
                 if (value == string.Empty)
                     throw new ArgumentException("Must have a city", nameof(value));
 
-                City = value;
+                city = value;
             }
 
         }
 
+        private string state;
         public string State
         {
-            get => State;
+            get => state;
             set
             {
                 if (value == string.Empty)
                     throw new ArgumentException("Must have an state", nameof(value));
 
-                State = value;
+                state = value;
             }
 
         }
 
 
-
+        private string zip;
         public string Zip
         {
-            get => Zip;
+            get => zip;
             set
             {
                 if (value.Length != 5)
                     throw new ArgumentException("Must have a zipcode", nameof(value));
 
-                Zip = value;
+                zip = value;
             }
 
         }

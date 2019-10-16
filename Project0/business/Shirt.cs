@@ -6,39 +6,43 @@ namespace BusinessLogic
 {
     public class Shirt
     {
+        private string name;
         public string Name
         {
-            get => Name;
+            get => name;
             set
             {
                 if (value == string.Empty)
                     throw new ArgumentException("Products must have a name", nameof(value));
 
-                Name = value;
+                name = value;
             }
         }
 
+        private decimal price;
         public decimal Price
         {
-            get => Price;
+            get => price;
             set
             {
                 if (value <= 0)
                     throw new ArgumentException("Products must have a price", nameof(value));
 
-                Price = value;
+                price = value;
             }
         }
 
+        private int productId;
+
         public int ProductId
         {
-            get => ProductId;
+            get => productId;
             set
             {
                 if (value <= 0)
                     throw new ArgumentException("Products must have an ID", nameof(value));
 
-                ProductId = value;
+                productId = value;
             }
         }
 

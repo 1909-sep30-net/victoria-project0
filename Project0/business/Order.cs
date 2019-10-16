@@ -6,15 +6,16 @@ namespace BusinessLogic
 {
     public class Order
     {
+        private int orderId;
         public int OrderId
         {
-            get => OrderId;
+            get => orderId;
             set
             {
                 if (value <= 0)
                     throw new ArgumentException("All stores have an ID", nameof(value));
 
-                OrderId = value;
+                orderId = value;
             }
         }
 
@@ -25,15 +26,16 @@ namespace BusinessLogic
 
         public Dictionary<Shirt, int> cart = new Dictionary<Shirt, int>();
 
+        private decimal orderTotal;
         public decimal OrderTotal
         {
-            get => OrderTotal;
+            get => orderTotal;
             set
             {
                 if (value < 0)
                     throw new ArgumentException("Order total cannot be negative", nameof(value));
 
-                OrderTotal = value; 
+                orderTotal = value; 
             }
         }
 

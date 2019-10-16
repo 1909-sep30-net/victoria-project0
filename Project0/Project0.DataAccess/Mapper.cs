@@ -12,7 +12,7 @@ namespace Project0.DataAccess
     {
 
         //convert DB Stores to BL Store 
-        public BusinessLogic.Store MapStore(Entities.Stores stores)
+        public static BusinessLogic.Store MapStore(Entities.Stores stores)
 
         {
 
@@ -35,7 +35,7 @@ namespace Project0.DataAccess
         }
 
         //Convert BL Store into DB Stores
-        public Project0.DataAccess.Entities.Stores MapDbStores(Store store)
+        public static Project0.DataAccess.Entities.Stores MapDbStores(Store store)
 
         {
 
@@ -56,10 +56,7 @@ namespace Project0.DataAccess
             };
 
         }
-        internal static Store MapStore(object p)
-        {
-            throw new NotImplementedException();
-        }
+      
 
         //converts DB Products to  BL Shirt 
         public static BusinessLogic.Shirt MapShirt(Entities.Products products)
@@ -203,6 +200,34 @@ namespace Project0.DataAccess
             };
         }
 
+        //Connecting DB Inventory to inventory dictionary
+        public Project0.DataAccess.Entities.Stores MapDbInventory(Store store)
+        {
+            /* return new Project0.DataAccess.Entities.Stores
+
+            {
+                StoreId = store.StoreId,
+                Inventory = store.Inventory.ToDictionary(i =>
+                {
+                    // make a product from a shirt
+                    
+                    return new Products(i.Shirt.Name, i.Shirt.Price, i.Shirt.ProductId);
+
+                },
+                i => i.Quantity ?? throw new ArgumentException("Quantity can't be null."))
+            };*/
+
+            Entities.Stores stores = new Entities.Stores();
+            stores.StoreId = store.StoreId;
+            //stores.Inventory = new HashSet<Entities.Inventory>();
+
+            foreach (Shirt s in store.Inventory.Keys)
+            {
+                stores.Inventory.Add(new Entities.Inventory { StoreId = store.StoreId, ProductId = s.ProductId, Quantity = store.Inventory[s]});
+            }
+
+            return stores;
+        }
 
     }
            
