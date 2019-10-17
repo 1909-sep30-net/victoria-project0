@@ -19,8 +19,9 @@ namespace BusinessLogic
             }
         }
 
+        public int StoreId;
 
-        public Customer orderedBy;
+        public int CustomerId;
 
         public DateTime DateOfOrder = new DateTime();
 

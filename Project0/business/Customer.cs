@@ -19,7 +19,12 @@ namespace BusinessLogic
                 
                 firstName = value;
             }
+
+            
         }
+
+
+
 
         private string lastName;
         public string LastName
@@ -73,6 +78,10 @@ namespace BusinessLogic
                     throw new ArgumentException("Must have an state", nameof(value));
 
                 state = value;
+
+                if (value.Length != 2)
+                    throw new ArgumentException("Please insert state initials (i.e. TX for Texas).", nameof(value));
+                state = value;
             }
 
         }
@@ -85,9 +94,11 @@ namespace BusinessLogic
             set
             {
                 if (value.Length != 5)
-                    throw new ArgumentException("Must have a zipcode", nameof(value));
+                    throw new ArgumentException("Please ensure that your zipcode is 5 digits long.", nameof(value));
 
                 zip = value;
+
+    
             }
 
         }

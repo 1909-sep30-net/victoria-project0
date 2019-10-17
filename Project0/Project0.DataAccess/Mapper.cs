@@ -147,7 +147,7 @@ namespace Project0.DataAccess
         }
 
         //Convert DB Orders to BL Order  
-        public BusinessLogic.Order MapOrder(Entities.Orders orders)
+        public static BusinessLogic.Order MapOrder(Orders orders)
         {
             return new BusinessLogic.Order
 
@@ -157,7 +157,15 @@ namespace Project0.DataAccess
 
                 DateOfOrder = orders.OrderDate,
 
-                OrderTotal = orders.Total
+                OrderTotal = orders.Total,
+
+                StoreId = orders.StoreId,
+
+                CustomerId = orders.CustomerId,
+
+                //cart = MapCart()*/
+
+
 
 
             };
@@ -166,8 +174,12 @@ namespace Project0.DataAccess
         }
 
         //Convert BL Order to DB Orders 
-        public Project0.DataAccess.Entities.Orders MapDbOrders(Order order)
+        public static Project0.DataAccess.Entities.Orders MapDbOrders(Order order, OrderDetail orderDetail)
         {
+            ICollection<OrderDetail> o = new List<OrderDetail>() { orderDetail };
+
+            
+
             return new Project0.DataAccess.Entities.Orders
 
             {
@@ -176,7 +188,14 @@ namespace Project0.DataAccess
 
                 OrderDate = order.DateOfOrder,
 
-                Total = order.OrderTotal
+                Total = order.OrderTotal,
+
+                StoreId = order.StoreId,
+
+                CustomerId = order.CustomerId,
+
+                OrderDetail = o
+
 
 
             };
@@ -184,7 +203,15 @@ namespace Project0.DataAccess
 
         }
 
+        public Project0.DataAccess.Entities.OrderDetail MapDbOrderDetails()
+        {
+            return new Project0.DataAccess.Entities.OrderDetail
+            {
 
+            };
+        }
+            
+            
         //Connecting Inventory Dictionary to DB inventory
         public BusinessLogic.Store MapInventory(Stores stores)
         {
@@ -205,7 +232,7 @@ namespace Project0.DataAccess
 
       
 
-
+        //method to get context
         public static ClothesEncountersContext GetContext()
         {
             string connectionString = SecretConfiguration.ConnectionString;
@@ -219,8 +246,8 @@ namespace Project0.DataAccess
 
        
 
-        //public Dictionary<Shirt, int> cart = new Dictionary<Shirt, int>();
-        public BusinessLogic.Order MapCart(IEnumerable<OrderDetail> orderDetail)
+        // map order cart to order details
+        public static BusinessLogic.Order MapCart(IEnumerable<OrderDetail> orderDetail)
         {
             
 
@@ -241,23 +268,6 @@ namespace Project0.DataAccess
            
 
         }
-
-
-        //public Project0.DataAccess.Entities.OrderDetail MapCart(Order order)
-        //{
-        //    return new Project0.DataAccess.Entities.OrderDetail
-        //    {
-        //        OrderDetail = order.cart.ToDictionary(c =>
-        //        {
-        //            return new Shirt(c.Shirt.Name, c.Product.Price, c.Product.ProductId);
-
-        //        },
-        //            c => c.ProductQuant)
-        //    };
-
-
-
-        //}
 
 
 

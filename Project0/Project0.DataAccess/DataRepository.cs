@@ -28,6 +28,15 @@ namespace Project0.DataAccess
             context.SaveChanges();
         }
 
+        public void AddNewOrder(Order _ord, OrderDetail _od1)
+        {
+            Orders Ord = Mapper.MapDbOrders(_ord, _od1);
+            context.Add(Ord);
+            context.SaveChanges();
+        }
+
+    
+
         public List<BusinessLogic.Customer> GetAllCustomers()
         {
             IQueryable<Project0.DataAccess.Entities.Customers> customers = context.Customers
